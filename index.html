@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PrimeVue Component Explorer</title>
+    <meta name="description" content="A visual gallery of all PrimeVue components for Vue.js developers">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://unpkg.com/primevue/resources/themes/lara-light-indigo/theme.css">
+    <link rel="stylesheet" href="https://unpkg.com/primeflex@latest/primeflex.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/primeicons/primeicons.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/svg+xml" href="https://primevue.org/favicon.ico">
+</head>
+<body>
+  <!-- PrimeVue Component Explorer by https://dariuszsikorski.pl -->
+    <div class="App">
+        <header class="App_header">
+            <div class="App_headerContent">
+                <div class="App_logo">
+                    <img src="https://www.primefaces.org/wp-content/uploads/2019/12/primevue-logo.png" alt="PrimeVue Logo" class="App_logoImage">
+                </div>
+                <h1 class="App_title">Component Explorer</h1>
+                <div class="App_search">
+                    <span class="search-icon pi pi-search"></span>
+                    <input 
+                        type="text" 
+                        id="searchInput" 
+                        placeholder="Search for components..." 
+                        class="App_searchInput"
+                    >
+                    <button id="clearSearch" class="App_clearSearch pi pi-times"></button>
+                </div>
+                <div class="App_stats" id="componentStats">
+                    <span id="componentCount">0</span> components in <span id="categoryCount">0</span> categories
+                </div>
+            </div>
+        </header>
+
+        <div class="App_sidebar">
+            <nav class="App_nav">
+                <div class="App_navTitle">Categories</div>
+                <ul class="App_navList" id="categoryNav">
+                    <!-- Category navigation will be inserted here -->
+                </ul>
+                <div class="App_navFooter">
+                    <a href="https://primevue.org" target="_blank" class="App_navLink">
+                        <i class="pi pi-external-link"></i>
+                        Official Documentation
+                    </a>
+                </div>
+            </nav>
+        </div>
+
+        <main class="App_main">
+            <div class="App_topGradient"></div>
+            <div class="App_noResults" id="noResults">
+                <div class="App_noResultsIcon pi pi-search"></div>
+                <div class="App_noResultsText">No components match your search.</div>
+                <button id="resetSearch" class="App_resetButton">Reset Search</button>
+            </div>
+            
+            <!-- Component sections will be dynamically inserted here -->
+            <div id="componentsContainer" class="App_components"></div>
+            
+            <div class="App_scrollToTop" id="scrollToTop">
+                <i class="pi pi-chevron-up"></i>
+            </div>
+        </main>
+
+        <footer class="App_footer">
+            <div class="App_footerContent">
+                <div class="App_footerInfo">
+                    <p class="App_footerText">
+                        Created with <i class="pi pi-heart-fill" style="color: #ef4444;"></i> for Vue developers
+                    </p>
+                    <p class="App_footerText App_footerCopyright">
+                        PrimeVue component screenshots from <a href="https://primevue.org" target="_blank" class="App_footerLink">primevue.org</a>
+                    </p>
+                </div>
+                <div class="App_footerLinks">
+                    <a href="https://primevue.org/introduction/" target="_blank" class="App_footerLink">Documentation</a>
+                    <a href="https://github.com/primefaces/primevue" target="_blank" class="App_footerLink">GitHub</a>
+                    <a href="https://discord.gg/gzKFYnpmCY" target="_blank" class="App_footerLink">Discord</a>
+                    <a href="https://twitter.com/primevue" target="_blank" class="App_footerLink">Twitter</a>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
