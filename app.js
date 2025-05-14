@@ -745,9 +745,15 @@ function setupScaleControls() {
         currentScaleIndex = index % scales.length;
         const scale = scales[currentScaleIndex];
         
-        document.body.style.zoom = scale.level;
+        const mainContent = document.querySelector('.App_main');
+        if (mainContent) {
+            mainContent.style.zoom = scale.level;
+        } else {
+            dev.warn('.App_main element not found for scaling.');
+        }
+        
         // Update button content to include icon and text
-        scaleButton.innerHTML = `<i class="pi ${scale.icon}" style="margin-right: 0.25rem;"></i> ${scale.text}`;
+        scaleButton.innerHTML = `&#8981; ${scale.text}`;
         scaleButton.title = `Change UI Scale (Currently ${scale.text})`;
         
         // Persist to localStorage
@@ -761,17 +767,17 @@ function setupScaleControls() {
     const persistedScaleIndex = localStorage.getItem('uiScaleIndex');
 
     if (persistedScaleLevel) {
-        const initialIndex = parseInt(persistedScaleIndex, 10) || 0;
+        const initialIndex = parseInt(persistedScaleIndex, 10);
         // Ensure the loaded index is valid for the current scales array
-        if (initialIndex >= 0 && initialIndex < scales.length && scales[initialIndex].level.toString() === persistedScaleLevel) {
+        if (!isNaN(initialIndex) && initialIndex >= 0 && initialIndex < scales.length && scales[initialIndex].level.toString() === persistedScaleLevel) {
             applyScale(initialIndex);
         } else {
-            // If persisted data is inconsistent, default to 100%
-            applyScale(0);
+            // If persisted data is inconsistent, default to 125%
+            applyScale(1); // Default to 125% (index 1)
         }
     } else {
-        // Default to 100% if no persisted scale
-        applyScale(0);
+        // Default to 125% if no persisted scale
+        applyScale(1); // Default to 125% (index 1)
     }
 
     scaleButton.addEventListener('click', () => {

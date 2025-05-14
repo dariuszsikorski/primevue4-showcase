@@ -354,6 +354,7 @@ button {
     padding: 2rem 1.5rem 4rem;
     background-color: var(--bg-body);
     min-height: calc(100vh - var(--header-height));
+    transition: zoom 0.33s ease-in-out;
 }
 
 .App_topGradient {
