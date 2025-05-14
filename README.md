@@ -1,6 +1,6 @@
 # PrimeVue Component Explorer
 
-Live: [primevue-component-explorer](https://dariuszsikorski.github.io/primevue4-showcase)
+Live: [primevue-component-explorer](https://dariuszsikorski.github.io/primevue4-showcase/)
 
 A comprehensive visual gallery of all PrimeVue UI components in one place. Browse through the entire component library in a clean, interactive interface to quickly find the right component for your Vue project.
 
@@ -43,6 +43,7 @@ This project was created to make it easier for Vue developers to visually explor
 
 Created by [Dariusz Sikorski](https://dariuszsikorski.pl)  
 Connect on [LinkedIn](https://www.linkedin.com/in/dariusz-sikorski-56281b3a)
+Repository [Github] https://github.com/dariuszsikorski/primevue4-showcase
 
 ## License
 
