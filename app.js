@@ -640,6 +640,9 @@ function initExplorer() {
     
     // Handle mobile navigation toggle
     setupMobileNavigation();
+
+    // Setup UI Scale Controls
+    setupScaleControls();
 }
 
 // Setup mobile navigation toggle
@@ -720,6 +723,62 @@ function setupMobileNavigation() {
     }
     
     dev.log('Mobile navigation initialized');
+}
+
+// Setup UI Scale Controls
+function setupScaleControls() {
+    const scaleButton = document.getElementById('scaleControl');
+    if (!scaleButton) {
+        dev.warn('Scale control button not found.');
+        return;
+    }
+
+    const scales = [
+        { level: 1, text: '100%', icon: 'pi-zoom-in' }, 
+        { level: 1.25, text: '125%', icon: 'pi-zoom-in' }, 
+        { level: 1.5, text: '150%', icon: 'pi-zoom-in' } // Static icon
+    ];
+    let currentScaleIndex = 0;
+
+    // Function to apply scale and update button
+    function applyScale(index) {
+        currentScaleIndex = index % scales.length;
+        const scale = scales[currentScaleIndex];
+        
+        document.body.style.zoom = scale.level;
+        // Update button content to include icon and text
+        scaleButton.innerHTML = `<i class="pi ${scale.icon}" style="margin-right: 0.25rem;"></i> ${scale.text}`;
+        scaleButton.title = `Change UI Scale (Currently ${scale.text})`;
+        
+        // Persist to localStorage
+        localStorage.setItem('uiScaleLevel', scale.level.toString());
+        localStorage.setItem('uiScaleIndex', currentScaleIndex.toString());
+        dev.log(`UI Scale set to ${scale.text} (${scale.level})`);
+    }
+
+    // Load persisted scale on init
+    const persistedScaleLevel = localStorage.getItem('uiScaleLevel');
+    const persistedScaleIndex = localStorage.getItem('uiScaleIndex');
+
+    if (persistedScaleLevel) {
+        const initialIndex = parseInt(persistedScaleIndex, 10) || 0;
+        // Ensure the loaded index is valid for the current scales array
+        if (initialIndex >= 0 && initialIndex < scales.length && scales[initialIndex].level.toString() === persistedScaleLevel) {
+            applyScale(initialIndex);
+        } else {
+            // If persisted data is inconsistent, default to 100%
+            applyScale(0);
+        }
+    } else {
+        // Default to 100% if no persisted scale
+        applyScale(0);
+    }
+
+    scaleButton.addEventListener('click', () => {
+        applyScale(currentScaleIndex + 1);
+    });
+
+    dev.log('UI Scale controls initialized');
 }
 
 // Initialize the explorer when the DOM is fully loaded

@@ -112,10 +112,20 @@ button {
 .App_headerContent {
     display: flex;
     align-items: center;
-    max-width: 1400px;
+    justify-content: space-between;
     margin: 0 auto;
     padding: 0 1.5rem;
     height: 100%;
+}
+
+.App_headerLeft {
+    display: flex;
+    align-items: center;
+}
+
+.App_headerRight {
+    display: flex;
+    align-items: center;
 }
 
 .App_logo {
@@ -190,6 +200,32 @@ button {
 .App_clearSearch:hover {
     background-color: var(--gray-200);
     color: var(--gray-700);
+}
+
+.App_scaleControl {
+    background: none;
+    border: none;
+    color: var(--gray-500);
+    font-size: 0.875rem;
+    padding: 0 0.75rem;
+    height: 2.5rem;
+    border-radius: var(--radius);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: var(--transition);
+    margin-left: 0.5rem;
+    margin-right: 15px;
+    white-space: nowrap;
+}
+
+.App_scaleControl i {
+    /* Icon already has margin-right from JS */
+}
+
+.App_scaleControl:hover {
+    background-color: var(--gray-100);
+    color: var(--primary-color);
 }
 
 .App_stats {
